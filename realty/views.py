@@ -5,6 +5,6 @@ from django.http.response import HttpResponse, Http404
 
 #function for the home page
 def index(request):
-    return redirect(request, 'main/index.html')
+    return HttpResponse('Welcome to your dream home')
 
 
