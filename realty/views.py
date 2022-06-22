@@ -70,6 +70,15 @@ def logout(request):
         return redirect('index')
 
 
+# function for user dashboard
+def dashboard(request):
+    user_contacts= Contacts.objects.order_by('-contact_date').filter(user_id=request.user.id)
+
+    context ={
+        'contacts':user_contacts
+    }
+    return render(request,'accounts/dashboard.html',context)
+
 #function for the home page
 @login_required(login_url='login')
 def index(request):
