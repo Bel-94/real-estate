@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 # imports for creating authentication
 from django.contrib.auth.models import User
 from .models import Contacts
-from django.contrib import messages
+from django.contrib import messages, auth
 
 # Create your views here.
 
@@ -41,6 +41,25 @@ def register(request):
 
     else:
         return render(request,'accounts/register.html')
+
+
+# function for log in
+def login(request):
+    if request.method =='POST':
+        username=request.POST['username']
+        password=request.POST['password']
+
+        user=auth.authenticate(username=username,password=password)
+
+        if user is not None:
+            auth.login(request, user)
+            messages.success(request, 'You are now logged in')
+            return redirect('dashboard')
+        else:
+            messages.error(request,'Invalid credentials')
+            return redirect('login')
+    else:
+        return render(request,'accounts/login.html')
 
 #function for the home page
 @login_required(login_url='login')
