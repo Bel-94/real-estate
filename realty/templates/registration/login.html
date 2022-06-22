@@ -1,21 +1,36 @@
-{% extends 'django_registration/base_form.html' %} 
-{% load bootstrap4 %}
+{% extends 'main/base.html' %}
+{% block title %} | Account Login {% endblock %}
 {% block content %}
-{{block.super}}
+<section id="login" class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              <h4>
+                <i class="fas fa-sign-in-alt"></i> Login</h4>
+            </div>
+            <div class="card-body">
+                 <!--Alerts-->
+                 {% include 'partials/_alert.html' %}  
+              <form action="{% url 'login' %}" method="POST">
+                  {% csrf_token %}
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" name="username" class="form-control" required>
+                </div>
 
-<div class="container">
-  <form action="/accounts/login/" method="POST" id="reg-form">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    <div class="form-group">
-      <input type="submit" class="btn loginbtn" value="Log In">
+                <div class="form-group">
+                  <label for="password2">Password</label>
+                  <input type="password" name="password" class="form-control" required>
+                </div>
+
+                <input type="submit" value="Login" class="btn btn-secondary btn-block">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <input type="hidden" name="next" value="/">
-
-  </form>
-  <div class="container">
-    <p class="text-center">Dont have an account? <a href="/accounts/register"  style="color: red;">Register</a></p>
-  </div>
-</div>
+  </section>
 {% endblock %}
