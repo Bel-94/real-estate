@@ -82,6 +82,19 @@ COUNTIES = [
     ('West Pokot', ('West Pokot')),
 ]
 
+class Realtor(models.Model):
+    name = models.CharField(max_length=50)
+    photo = models.CloudinaryField('photo', null=True)
+    description = models.TextField(max_length=500)
+    phone_number = models.IntegerField(max_length=20)
+    email = models.CharField(max_length=50)
+    hire_date = models.DateTimeField(auto_now_add=True)
+    is_mvp = models.BooleanField(null=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Listing(models.Model):
     name = models.CharField(max_length=50)
     address = models.CharField(max_length=100)
@@ -102,6 +115,10 @@ class Listing(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
+
 
 
 
