@@ -1,33 +1,32 @@
-from tkinter import CASCADE
 from django.db import models
 from cloudinary.models import CloudinaryField
 
 # Create your models here.
 BEDROOMS={
 
-    '1':1,
-    '2':2,
-    '3':3,
-    '4':4,
-    '5':5,
-    '6':6,
-    '7':7,
-    '8':8,
-    '9':9,
-    '10':10,
+    ('1',('1')),
+    ('2',('2')),
+    ('3',('3')),
+    ('4',('4')),
+    ('5',('5')),
+    ('6',('6')),
+    ('7',('7')),
+    ('8',('8')),
+    ('9',('9')),
+    ('10',('10')),
 }
 
 PRICES={
-    '100000':'$100,000',
-    '200000':'$200,000',
-    '300000':'$300,000',
-    '400000':'$400,000',
-    '500000':'$500,000',
-    '700000':'$700,000',
-    '600000':'$600,000',
-    '800000':'$800,000',
-    '900000':'$900,000',
-    '1000000':'$1M+',
+    ('100000',('$100,000')),
+    ('200000',('$200,000')),
+    ('300000',('$300,000')),
+    ('400000',('$400,000')),
+    ('500000',('$500,000')),
+    ('700000',('$700,000')),
+    ('600000',('$600,000')),
+    ('800000',('$800,000')),
+    ('900000',('$900,000')),
+    ('1000000',('$1M+')),
 
 }
 
@@ -84,9 +83,9 @@ COUNTIES = [
 
 class Realtor(models.Model):
     name = models.CharField(max_length=50)
-    photo = models.CloudinaryField('photo', null=True)
+    photo = CloudinaryField('photo', null=True)
     description = models.TextField(max_length=500)
-    phone_number = models.IntegerField(max_length=20)
+    phone_number = models.IntegerField()
     email = models.CharField(max_length=50)
     hire_date = models.DateTimeField(auto_now_add=True)
     is_mvp = models.BooleanField(null=True)
@@ -105,16 +104,18 @@ class Listing(models.Model):
     bedrooms = models.IntegerField(choices=BEDROOMS)
     bathrooms = models.DecimalField(max_digits=10, decimal_places=1)
     sqft = models.IntegerField()
-    main_image = models.CloudinaryField('main_image', null=True)
-    image_1 = models.CloudinaryField('image_1', null=True)
-    image_2 = models.CloudinaryField('image_2', null=True)
-    image_3 = models.CloudinaryField('image_3', null=True)
-    realtor = models.ForeignKey(Realtor, on_delete=CASCADE)
+    main_image = CloudinaryField('main_image', null=True)
+    image_1 = CloudinaryField('image_1', null=True)
+    image_2 = CloudinaryField('image_2', null=True)
+    image_3 = CloudinaryField('image_3', null=True)
+    realtor = models.ForeignKey(Realtor, on_delete=models.CASCADE)
     is_published = models.BooleanField(default=True)
     list_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
+
+    
 
 
 class Contacts(models.Model):
