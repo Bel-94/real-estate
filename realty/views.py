@@ -61,6 +61,15 @@ def login(request):
     else:
         return render(request,'accounts/login.html')
 
+
+# function for logout
+def logout(request):
+    if request.method=='POST':
+        auth.logout(request)
+        messages.success(request,'You are now logged out')
+        return redirect('index')
+
+
 #function for the home page
 @login_required(login_url='login')
 def index(request):
