@@ -2,7 +2,7 @@
 
 <h2>By Belinda Ntinyari<h2>
 
-<p>This is an app that helps you stay in the loop on current news in your neighbourhood. Through the app, you can also view businesses near as well as be updated through posts from other hood members.</p>
+<p>This is an app that helps people to search for properties/listings to buy. They can also contact the realtor and make inquiries.</p>
 
 ## Screenshots 
 ###### Home page
