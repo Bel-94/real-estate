@@ -102,7 +102,7 @@ def index(request):
 
 # function for creating the pages
 def pages(request):
-    listings = Listing.objects.order_by('-list_data').filter(is_published=True)[:3]
+    listings = Listing.objects.order_by('-list_date').filter(is_published=True)[:3]
 
     context = {
         'listings': listings,
@@ -138,7 +138,7 @@ def listing(request, listing_id):
 
 # function for search
 def search(request):
-    queryset_list=Listing.objects.order_by('-list_data')
+    queryset_list=Listing.objects.order_by('-list_date')
 
     #keywords
     if 'keywords' in request.GET:

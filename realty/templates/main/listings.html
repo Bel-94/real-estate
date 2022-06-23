@@ -1,6 +1,7 @@
 {% extends 'main/base.html' %} 
 {% load bootstrap4 %}
 {% load static %}
+{% load humanize %}
 {% block title %} | Check Out Our Property Listings {% endblock %}
 
 {% block content %}
@@ -46,7 +47,7 @@
           <div class="card-img-overlay">
             <h2>
               <span class="badge badge-secondary text-white"
-                >${{ listing.price}}</span
+                >${{ listing.price | apnumber}}</span
               >
             </h2>
           </div>
