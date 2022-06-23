@@ -88,7 +88,7 @@ def dashboard(request):
 #function for the home page
 
 def index(request):
-    listings = Listing.objects.order_by('-list_data').filter(is_published=True)
+    listings = Listing.objects.order_by('-list_date').filter(is_published=True)
 
     paginator = Paginator(listings, 3)
     page = request.GET.get('page')

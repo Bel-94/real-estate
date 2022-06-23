@@ -1,7 +1,7 @@
 {% extends 'main/base.html' %}
 {% load bootstrap4 %}
 {% load static %}
-{% load humanize %}
+
 {% block title %} | Welcome {% endblock %}
 {% block content%}
 
@@ -107,7 +107,7 @@
             <img class="card-img-top" src="{{listing.main_image.url}}" alt="" />
             <div class="card-img-overlay">
               <h2>
-                <span class="badge badge-secondary text-white">${{ listing.price | intcomma}}</span>
+                <span class="badge badge-secondary text-white">${{ listing.price}}</span>
               </h2>
             </div>
             <div class="card-body">

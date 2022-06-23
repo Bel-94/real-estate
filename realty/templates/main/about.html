@@ -87,7 +87,7 @@
     aperiam, unde aliquid at similique!
   </h4>
   <hr />
-  <a href="listings.html" class="btn btn-secondary text-white btn-lg"
+  <a href="{%url 'listings' %}" class="btn btn-secondary text-white btn-lg"
     >View Our Featured Listings</a
   >
 </section>
@@ -104,14 +104,14 @@
           <img
             src="{{realtor.photo.url}}"
             alt=""
-            class="rounded-circle mb-3"
+            class="rounded-circle mb-3" width="90" height="90"
           />
           <h4>{{realtor.name}}</h4>
           <p class="text-success">
             <i class="fas fa-award text-success mb-3"></i> Realtor
           </p>
           <hr />
-          <p><i class="fas fa-phone"></i>{{realtor.phone}}</p>
+          <p style="color: #df336c"><i class="fas fa-phone"></i>{{realtor.phone_number}}</p>
           <p><i class="fas fa-envelope-open"></i> {{realtor.email}}</p>
         </div>
 

@@ -40,6 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # add this line to use humanize tags
+    'django.contrib.humanize',
+
+    # local apps
     'realty',
     'bootstrap4',
     'crispy_forms',
