@@ -16,13 +16,13 @@
 <p>The user is able to</p>
 
 <ul>
-    <li>Sign in with the application to start using.</li>
-    <li>Set up a profile about them and a general location and neighbourhood name.</li>
-    <li>Find a list of different businesses in the neighbourhood. </li>
-    <li>Find contact information for the health department and police authorities near the neighbourhood. </li>
-    <li>Create posts that will be visible to everyone in the neighbourhood.</li>
-    <li>Change neighbourhood when they decide to move out.</li>
-    <li>Only view details of a single neighbourhood</li>
+    <li>.</li>
+    <li>.</li>
+    <li>. </li>
+    <li>. </li>
+    <li>.</li>
+    <li>.</li>
+    <li>.</li>
 </ul>
 
 <h3>Technologies Used</h3>
