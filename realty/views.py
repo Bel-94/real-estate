@@ -1,11 +1,15 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http.response import HttpResponse, Http404
 from django.contrib.auth.decorators import login_required
 
 # imports for creating authentication
 from django.contrib.auth.models import User
-from .models import Contacts
+from .models import Contacts, Listing
 from django.contrib import messages, auth
+
+# imports for creating the view functions for the project
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+
 
 # Create your views here.
 
@@ -40,7 +44,7 @@ def register(request):
             return redirect('register')
 
     else:
-        return render(request,'accounts/register.html')
+        return render(request,'registration/register.html')
 
 
 # function for log in
@@ -59,7 +63,7 @@ def login(request):
             messages.error(request,'Invalid credentials')
             return redirect('login')
     else:
-        return render(request,'accounts/login.html')
+        return render(request,'registration/login.html')
 
 
 # function for logout
@@ -77,11 +81,34 @@ def dashboard(request):
     context ={
         'contacts':user_contacts
     }
-    return render(request,'accounts/dashboard.html',context)
+    return render(request,'registration/dashboard.html',context)
 
 #function for the home page
-@login_required(login_url='login')
+
 def index(request):
-    return HttpResponse('Welcome to your dream home')
+    listings = Listing.objects.order_by('-list_data').filter(is_published=True)
+
+    paginator = Paginator(listings, 3)
+    page = request.GET.get('page')
+    paged_listings = paginator.get_page(page)
+
+    context = {
+        'listings': paged_listings
+    }
+
+    return render(request, 'main/listings.html', context)
+
+# function for getting the listings
+def listing(request, listing_id):
+    listing = get_object_or_404(Listing, pk=listing_id)
+
+    context = {
+        'listing':listing
+    }
+
+    return render(request, 'main/listing.html', context)
+
+# function for search
+
 
 
