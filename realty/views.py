@@ -4,11 +4,13 @@ from django.contrib.auth.decorators import login_required
 
 # imports for creating authentication
 from django.contrib.auth.models import User
-from .models import Contacts, Listing
+from .models import BEDROOMS, COUNTIES, PRICES, Contacts, Listing
 from django.contrib import messages, auth
 
 # imports for creating the view functions for the project
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+
+
 
 
 # Create your views here.
@@ -109,6 +111,48 @@ def listing(request, listing_id):
     return render(request, 'main/listing.html', context)
 
 # function for search
+def search(request):
+    queryset_list=Listing.objects.order_by('-list_data')
 
+    #keywords
+    if 'keywords' in request.GET:
+        keywords = request.GET['keywords']
+        if keywords:
+            queryset_list = queryset_list.filter(description__icontains = keywords)
+        
+   #location
+    if 'location' in request.GET:
+        location = request.GET['location']
+        if location:
+            queryset_list=queryset_list.filter(location__iexact = location)
+
+     #county
+    if 'county' in request.GET:
+        county = request.GET['county']
+        if county:
+            queryset_list=queryset_list.filter(county__iexact = county)
+    
+    
+     # Bedrooms
+    if 'bedrooms' in request.GET:
+        bedrooms = request.GET['bedrooms']
+        if bedrooms:
+            queryset_list=queryset_list.filter(bedrooms__lte=bedrooms)
+        
+     # Price
+    if 'price' in request.GET:
+        price = request.GET['price']
+        if price:
+            queryset_list=queryset_list.filter(price__lte=price)
+                
+    context={
+        'state_choices':COUNTIES,
+        'bedroom_choices':BEDROOMS,
+        'price_choices':PRICES,
+        'listings':queryset_list,
+        'values':request.GET,
+    }
+
+    return render(request, 'main/search.html', context)
 
 
