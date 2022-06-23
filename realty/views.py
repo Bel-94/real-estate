@@ -100,6 +100,18 @@ def index(request):
 
     return render(request, 'main/listings.html', context)
 
+# function for creating the pages
+def pages(request):
+    listings = Listing.objects.order_by('-list_data').filter(is_published=True)[:3]
+
+    context = {
+        'listings': listings,
+        'state_choices':COUNTIES,
+        'bedroom_choices':BEDROOMS,
+        'price_choices':PRICES,
+    }
+    return render(request, 'main/index.html', context)
+
 # function for getting the listings
 def listing(request, listing_id):
     listing = get_object_or_404(Listing, pk=listing_id)
@@ -179,7 +191,7 @@ def contact(request):
         contact=Contacts(listing=listing, listing_id=listing_id, name=name, email=email,phone=phone, message=message, user_id=user_id)
 
         contact.save()
-        
+
         messages.success(request, 'Your request has been submitted, a realtor will get back to you soon')
         return redirect('/listings/'+listing_id)
 
