@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 
 # imports for creating authentication
 from django.contrib.auth.models import User
-from .models import BEDROOMS, COUNTIES, PRICES, Contacts, Listing
+from .models import BEDROOMS, COUNTIES, PRICES, Contacts, Listing, Realtor
 from django.contrib import messages, auth
 
 # imports for creating the view functions for the project
@@ -111,6 +111,20 @@ def pages(request):
         'price_choices':PRICES,
     }
     return render(request, 'main/index.html', context)
+
+# function for creating the about page
+def about(request):
+    realtors=Realtor.objects.order_by('-hire_date')
+
+    mvp_realtors=Realtor.objects.all().filter(is_mvp=True)
+
+    context= {
+        'realtors':realtors,
+        'mvp_realtors':mvp_realtors
+    }
+
+
+    return render(request, 'main/about.html', context)
 
 # function for getting the listings
 def listing(request, listing_id):
