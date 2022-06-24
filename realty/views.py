@@ -138,48 +138,58 @@ def listing(request, listing_id):
 
 # function for search
 def search(request):
-    queryset_list=Listing.objects.order_by('-list_date')
+    if request.method=="POST":
+        searched = request.POST['searched']
+        listings = Listing.objects.filter(name__contains=searched)
+        return render(request, 'main/search.html', {'searched':searched, 'listings':listings})
+    else:
 
-    #keywords
-    if 'keywords' in request.GET:
-        keywords = request.GET['keywords']
-        if keywords:
-            queryset_list = queryset_list.filter(description__icontains = keywords)
+
+
+
+
+#     queryset_list=Listing.objects.order_by('-list_date')
+
+#     #keywords
+#     if 'keywords' in request.GET:
+#         keywords = request.GET['keywords']
+#         if keywords:
+#             queryset_list = queryset_list.filter(description__icontains = keywords)
         
-   #location
-    if 'location' in request.GET:
-        location = request.GET['location']
-        if location:
-            queryset_list=queryset_list.filter(location__iexact = location)
+#    #location
+#     if 'location' in request.GET:
+#         location = request.GET['location']
+#         if location:
+#             queryset_list=queryset_list.filter(location__iexact = location)
 
-     #county
-    if 'county' in request.GET:
-        county = request.GET['county']
-        if county:
-            queryset_list=queryset_list.filter(county__iexact = county)
+#      #county
+#     if 'county' in request.GET:
+#         county = request.GET['county']
+#         if county:
+#             queryset_list=queryset_list.filter(county__iexact = county)
     
     
-     # Bedrooms
-    if 'bedrooms' in request.GET:
-        bedrooms = request.GET['bedrooms']
-        if bedrooms:
-            queryset_list=queryset_list.filter(bedrooms__lte=bedrooms)
+#      # Bedrooms
+#     if 'bedrooms' in request.GET:
+#         bedrooms = request.GET['bedrooms']
+#         if bedrooms:
+#             queryset_list=queryset_list.filter(bedrooms__lte=bedrooms)
         
-     # Price
-    if 'price' in request.GET:
-        price = request.GET['price']
-        if price:
-            queryset_list=queryset_list.filter(price__lte=price)
+#      # Price
+#     if 'price' in request.GET:
+#         price = request.GET['price']
+#         if price:
+#             queryset_list=queryset_list.filter(price__lte=price)
                 
-    context={
-        'state_choices':COUNTIES,
-        'bedroom_choices':BEDROOMS,
-        'price_choices':PRICES,
-        'listings':queryset_list,
-        'values':request.GET,
-    }
+#     context={
+#         'COUNTIES':COUNTIES,
+#         'BEDROOMS':BEDROOMS,
+#         'PRICES':PRICES,
+#         'listings':queryset_list,
+#         'values':request.GET,
+#     }
 
-    return render(request, 'main/search.html', context)
+        return render(request, 'main/search.html')
 
 # function for creating the contact form
 def contact(request):

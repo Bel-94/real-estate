@@ -4,7 +4,32 @@
 
 {% block title %} | Search Results {% endblock %}
 {% block content %}
-<section id="showcase-inner" class="showcase-search text-white py-5">
+
+<section id="showcase-inner" class="py-5 text-white">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12">
+        {% if searched %}
+<h1 style="color: #C0392B;">You searched for {{searched }}</h1>
+<br>
+{% for listing in listings %}
+<h1 class="display-4">{{ listing.name }}</h1>
+<p class="lead">
+  <i class="fas fa-map-marker"></i>{{ listing.location }} {{listing.county}}</p>
+
+{% endfor %}
+
+{% else %}
+<h1 style="color: #C0392B;">Hey! You forgot to search for a listing...
+{% endif %}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% comment %} <section id="showcase-inner" class="showcase-search text-white py-5">
     <div class="container">
       <div class="row text-center">
         <div class="col-md-12">
@@ -13,28 +38,30 @@
             <div class="form-row">
               <div class="col-md-4 mb-3">
                 <label class="sr-only">Keywords</label>
-                <input type="text" name="keywords" class="form-control" placeholder="Keyword (bedrooms, sqft, etc)" value="{{ value.keywords}}">
+                <input type="text" name="keywords" class="form-control" placeholder="Keyword (bedrooms, sqft, etc)">
               </div>
+            </div>
 
+            <div class="form-row">
               <div class="col-md-4 mb-3">
                 <label class="sr-only">Location</label>
-                <input type="text" name="location" class="form-control" placeholder="Location"  value="{{ value.location}}">
+                <input type="text" name="location" class="form-control" placeholder="Location">
               </div>
-
+            </div>
+              
+            
               <div class="col-md-4 mb-3">
                 <label class="sr-only">County</label>
                 <select name="county" class="form-control">
-                  <option selected="true" disabled="disabled">County (All)</option>
+                  <option selected="true" disabled="disabled">County</option>
                   {% for key,value in COUNTIES.items %}
                   <option value="{{key}}"
-                      {% if key == values.county %} 
-                      selected
-                      {% endif %}
+                      
                   >{{value}}</option>
                   {% endfor %}
                 </select>
               </div>
-            </div>
+            
             <!-- Form Row 2 -->
             <div class="form-row">
               <div class="col-md-6 mb-3">
@@ -43,9 +70,7 @@
                   <option selected="true" disabled="disabled">Bedrooms (Any)</option>
                   {% for key,value in BEDROOMS.items %}
                     <option value="{{key}}"
-                    {% if key == values.bedrooms %} 
-                    selected
-                    {% endif %}
+                    
                     >{{value}}</option>
                     {% endfor %}
                 </select>
@@ -55,9 +80,7 @@
                   <option selected="true" disabled="disabled">Max Price (All)</option>
                   {% for key,value in PRICES.items %}
                   <option value="{{key}}"
-                  {% if key == values.price %} 
-                  selected
-                  {% endif %}
+                 
               >{{value}}</option>
               {% endfor %}
                 </select>
@@ -68,7 +91,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> {% endcomment %}
 
   <!-- Breadcrumb -->
   <section id="bc" class="mt-3">
