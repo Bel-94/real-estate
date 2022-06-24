@@ -90,7 +90,7 @@ def dashboard(request):
 def index(request):
     listings = Listing.objects.order_by('-list_date').filter(is_published=True)
 
-    paginator = Paginator(listings, 3)
+    paginator = Paginator(listings, 6)
     page = request.GET.get('page')
     paged_listings = paginator.get_page(page)
 
@@ -101,16 +101,16 @@ def index(request):
     return render(request, 'main/listings.html', context)
 
 # function for creating the pages
-# def pages(request):
-#     listings = Listing.objects.order_by('-list_date').filter(is_published=True)[:3]
+def pages(request):
+    listings = Listing.objects.order_by('-list_date').filter(is_published=True)[:3]
 
-#     context = {
-#         'listings': listings,
-#         'state_choices':COUNTIES,
-#         'bedroom_choices':BEDROOMS,
-#         'price_choices':PRICES,
-#     }
-#     return render(request, 'main/index.html', context)
+    context = {
+        'listings': listings,
+        'state_choices':COUNTIES,
+        'bedroom_choices':BEDROOMS,
+        'price_choices':PRICES,
+    }
+    return render(request, 'main/index.html', context)
 
 # function for creating the about page
 def about(request):
