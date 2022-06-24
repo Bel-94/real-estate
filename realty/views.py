@@ -92,13 +92,13 @@ def index(request):
 
     paginator = Paginator(listings, 6)
     page = request.GET.get('page')
-    paged_listings = paginator.get_page(page)
+    # paged_listings = paginator.get_page(page)
 
-    context = {
-        'listings': paged_listings
-    }
+    # context = {
+    #     'listings': paged_listings
+    # }
 
-    return render(request, 'main/listings.html', context)
+    return render(request, 'main/listings.html')
 
 # function for creating the pages
 def pages(request):
