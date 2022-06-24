@@ -9,7 +9,7 @@
 <img src="static/img/Screenshot from 2022-06-24 15-30-00.png">
 
 ###### Single listing and inquiry form
-<img src="static/img/Screenshot from 2022-06-24 15-32-31.png">
+<img src="static/img/Screenshot from 2022-06-24 15-40-11.png">
 
 ###### User Dashboard
 <img src="static/img/Screenshot from 2022-06-24 15-32-53.png">
