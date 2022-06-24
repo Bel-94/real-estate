@@ -101,7 +101,7 @@ class Listing(models.Model):
     address = models.CharField(max_length=100)
     location = models.CharField(max_length=50)
     county = models.CharField(choices=COUNTIES, max_length=50)
-    description = models.TextField(max_length=500)
+    description = models.TextField(max_length=1000)
     price = models.IntegerField(choices=PRICES)
     bedrooms = models.IntegerField(choices=BEDROOMS)
     bathrooms = models.DecimalField(max_digits=10, decimal_places=1)

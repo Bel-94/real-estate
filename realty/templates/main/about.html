@@ -43,7 +43,7 @@
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt,
           pariatur!
         </p>
-        <img src="{% static 'static/img/about.jpg' %}" alt="" />
+        <img src="{% static 'img/about1.avif' %}" alt="" />
         <p class="mt-4">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
           esse officia repudiandae ad saepe ex, amet neque quod accusamus rem
@@ -59,12 +59,12 @@
             <img
               class="card-img-top"
               src="{{realtor.photo.url }}"
-              alt="Seller of the month"
+              alt="Seller of the month" style="padding-bottom: 5px;"
             />
         <div class="card-body">
             <h5 class="card-title">Seller Of The Month</h5>
             <h6 class="text-secondary">{{realtor.name}}</h6>
-            <p class="card-text">
+            <p class="card-text" style="font-weight: bolder;">
              {{realtor.description}}
             </p>
           </div>
@@ -104,7 +104,7 @@
           <img
             src="{{realtor.photo.url}}"
             alt=""
-            class="rounded-circle mb-3" width="90" height="90"
+            class="image"
           />
           <h4>{{realtor.name}}</h4>
           <p class="text-success">
