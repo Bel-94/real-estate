@@ -6,23 +6,25 @@
 
 ## Screenshots 
 ###### Home page
-<img src="">
+<img src="static/img/Screenshot from 2022-06-24 15-30-00.png">
 
-###### SingleHood
-<img src="">
+###### single listing and inquiry form
+<img src="static/img/Screenshot from 2022-06-24 15-30-00.png">
+
+###### User Dashboard
+<img src="static/img/Screenshot from 2022-06-24 15-32-53.png">
 
 
 <h3>User Story</h3>
 <p>The user is able to</p>
 
 <ul>
-    <li>.</li>
-    <li>.</li>
-    <li>. </li>
-    <li>. </li>
-    <li>.</li>
-    <li>.</li>
-    <li>.</li>
+    <li>Register and login.</li>
+    <li>View all  the houses listed.</li>
+    <li>Search for a listing. </li>
+    <li>Make an inquiry about a specific listing. </li>
+    <li>See more information on the listing and the realtor.</li>
+    <li>Manage their account from the dashboard</li>
 </ul>
 
 <h3>Technologies Used</h3>
