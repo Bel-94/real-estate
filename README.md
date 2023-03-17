@@ -58,7 +58,7 @@ To get the project follow these steps:
 
 ##### Cloning the repository:  
  ```bash 
-https://github.com/ThiraTheNerd/neighbourhood.git
+https://github.com/Bel-94/real-estate.git
 ```
 ##### Navigate into the folder and install requirements  
  ```bash 
